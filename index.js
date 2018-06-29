@@ -10,13 +10,15 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
     console.log('a user connected');
-    socket.on('chat message', function(msg){
-      io.emit('chat message', msg);
+    // socket.emit('message', msg);
+
+    socket.on('message', function(msg){
       console.log('message: ' + msg);
     });
 });
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
+  
 });
     
